@@ -5,6 +5,7 @@ import App from "./App";
 
 // Generalized CSS
 import "./css/index.css";
+import "./css/Home.css";
 import "./css/HeaderFooter.css";
 
 ReactDOM.render(

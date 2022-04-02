@@ -1,0 +1,111 @@
+.Home{
+    background-color: #000;
+    position: relative;
+    overflow: hidden;
+    height: 92vh;
+}
+.Home .Heading,
+.Home .SubHeading{
+    position: absolute;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0px 0px 20px #fff;
+}
+.Home .Heading{
+    left: 6%;
+    top: 30%;
+    font-size: 12vw;
+}
+.Home .SubHeading{
+    font-size: 3vw;
+    top: 60%;
+}
+.Home .SubHeading#sh1{left: 22%;}
+.Home .SubHeading#sh2{right: 22%;}
+.Home .icons{
+    color:#ccc;
+    position: absolute;
+    font-size: 70px;
+    z-index: 2;
+}
+.Home .icons#HomePlane1{
+    animation: plane1 15s infinite linear;
+    transform: rotate(-20deg);
+}
+.Home .icons#HomePlane2{
+    animation: plane2 15s infinite linear;
+    transform: rotate(-20deg) scaleX(-1); 
+}
+.Home .icons#HomePlanet1{
+    animation: planet1 15s infinite linear;
+    top: 10%;
+    right: 20%;
+}
+.Home .icons#HomeQR{
+    animation: qr 10s infinite linear;
+    bottom: 10%;
+    left: 20%;
+}
+@keyframes plane1 {
+    0%{left:-10%; top: 30%;}
+    80%{left:50%; top: -10%;}
+}
+@keyframes plane2 {
+    20%{right:-10%; bottom: 40%;}
+    100%{right:50%; bottom: -10%;}
+}
+@keyframes planet1 {
+    0%{transform: rotate(0deg);}
+    30%{transform: rotate(90deg);}
+    50%{transform: rotate(180deg);}
+    70%{transform: rotate(270deg);}
+    100%{transform: rotate(360deg);}
+}
+@keyframes qr {
+    0%{opacity:0;transform:rotate(0deg)}
+    10%{opacity:1;}
+    15%{opacity:0;}
+    21%{opacity:0;}
+    22%{opacity:1;}
+    23%{opacity:0;}
+    26%{opacity:0;}
+    27%{opacity:1;}
+    28%{opacity:0;transform:rotate(90deg)}
+    41%{opacity:0;}
+    42%{opacity:1;}
+    43%{opacity:0;}
+    46%{opacity:0;transform:rotate(0deg)}
+    47%{opacity:1;}
+    48%{opacity:0;}
+    51%{opacity:0;}
+    52%{opacity:1;}
+    53%{opacity:0;}
+    56%{opacity:0;}
+    57%{opacity:1;}
+    58%{opacity:0;}
+    61%{opacity:0;transform:rotate(90deg)}
+    62%{opacity:1;}
+    63%{opacity:0;}
+    66%{opacity:0;}
+    67%{opacity:1;}
+    68%{opacity:0;}
+    81%{opacity:0;}
+    82%{opacity:1;}
+    83%{opacity:0;transform:rotate(0deg)}
+    86%{opacity:0;}
+    87%{opacity:1;}
+    88%{opacity:0;}
+    91%{opacity:0;}
+    92%{opacity:1;transform:rotate(90deg)}
+    93%{opacity:0;}
+    96%{opacity:0;}
+    97%{opacity:1;}
+    98%{opacity:0;transform:rotate(0deg)}
+
+}
+@keyframes gear {
+    0%{transform: rotate(0deg);}
+    30%{transform: rotate(90deg);}
+    50%{transform: rotate(180deg);}
+    70%{transform: rotate(270deg);}
+    100%{transform: rotate(360deg);}
+}

@@ -1,8 +1,8 @@
 .Life{
-    padding: 10px;
+    width: 150px;
 }
 .Life #LifeIcon{
-    color: tomato;
+    color: red;
     font-size: 20px;
     margin: 0px 5px;
 }

@@ -1,6 +1,32 @@
-
+.Header, .Footer{
+    position: fixed;
+    width: 100%;
+    background-color: rgba(0,0,0);
+    color: #fff;
+    z-index: 1;
+}
+.Header{
+    height: 50px;
+}
+.Header .Description{
+    color:#fff;
+    font-size: 15px;
+    font-weight: 600;
+    position: absolute;
+    left: 40%;
+    top: 30%;
+}
+.Header .Life{
+    position: absolute;
+    right: 2%;
+    top: 30%;
+}
 .Footer{
-    background-color: rgba(0,0,0,0.2);
-    font-size: 12px;
+    bottom: 0px;
+    padding: 10px 0px;
+    font-size: 10px;
     text-align: center;
+}
+.Footer #icon{
+    color: red;
 }
