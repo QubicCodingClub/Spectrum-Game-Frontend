@@ -1,8 +1,7 @@
 .Home{
-    background-color: #000;
     position: relative;
     overflow: hidden;
-    height: 92vh;
+    height: 85vh;
 }
 .Home .Heading,
 .Home .SubHeading{
@@ -30,10 +29,12 @@
 .Home .icons#HomePlane1{
     animation: plane1 15s infinite linear;
     transform: rotate(-20deg);
+    left:-10%; top: 30%;
 }
 .Home .icons#HomePlane2{
     animation: plane2 15s infinite linear;
     transform: rotate(-20deg) scaleX(-1); 
+    right:-10%; bottom: 40%;
 }
 .Home .icons#HomePlanet1{
     animation: planet1 15s infinite linear;
@@ -47,7 +48,7 @@
 }
 @keyframes plane1 {
     0%{left:-10%; top: 30%;}
-    80%{left:50%; top: -10%;}
+    100%{left:50%; top: -15%;}
 }
 @keyframes plane2 {
     20%{right:-10%; bottom: 40%;}
@@ -100,7 +101,6 @@
     96%{opacity:0;}
     97%{opacity:1;}
     98%{opacity:0;transform:rotate(0deg)}
-
 }
 @keyframes gear {
     0%{transform: rotate(0deg);}

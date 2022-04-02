@@ -5,9 +5,13 @@ const Life = ({ props }) => {
     var life = [],
         i;
     for (i = 0; i < props.life; i++)
-        life.push(<FaHeart className="LifeIntact" id="LifeIcon" />);
+        life.push(
+            <FaHeart className="LifeIntact" id="LifeIcon" key={"l" + i} />
+        );
     for (i = 0; i < 5 - props.life; i++)
-        life.push(<FaHeartBroken className="LifeUsed" id="LifeIcon" />);
+        life.push(
+            <FaHeartBroken className="LifeUsed" id="LifeIcon" key={"ll" + i} />
+        );
     return <div className="Life">{life}</div>;
 };
 
