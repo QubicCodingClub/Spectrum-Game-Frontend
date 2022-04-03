@@ -7,13 +7,14 @@ const Bingo = () => {
   const [ans, setAns] = useState();
   
   const { life } = useSelector((state) => state.Bingo);
-  const [incorrect, setIncorrect] = useState(5);
-  const { cnt } = useSelector((state) => state.Bingo)
+  const [incorrect, setIncorrect] = useState(life);
+  const { cnt, num } = useSelector((state) => state.Bingo)
+  const [submitted, setSubmited] = useState(num);
   const [count, setCount] = useState(cnt);
-  console.log(count)
+  console.log(num)
+
 
   useEffect(() => {
-    console.log("gsdfv");
     for(let i=0; i<count; i++ ){
       document.getElementById('b'+nums[i]).setAttribute("style", "background-color: mediumseagreen;");
     }
@@ -121,10 +122,13 @@ const Bingo = () => {
   const reset = () => {
     dispatch({type: 'REDUCE_LIFE', payload: 5})
     dispatch({type: 'INC_CNT', payload: 0})
+    dispatch({ type: "SUBMIT", payload: [] });
   }
 
   const submitHandler = (key, ans) => (e) => {
     e.preventDefault();
+    setSubmited([...submitted, key])
+    dispatch({ type: "SUBMIT", payload: [...submitted, key] });
     checkans(key, ans);
   };
 
@@ -241,7 +245,13 @@ const Bingo = () => {
               />{" "}
               {question.options.d}
             </div>
-            <input type="submit" value="Submit" />
+            {
+              (submitted.includes(key)) ? (
+                <input type="submit" value="Submit" disabled/>
+              ):(
+              <input type="submit" value="Submit" />
+              )
+            }
           </div>
         </form>
       ))}

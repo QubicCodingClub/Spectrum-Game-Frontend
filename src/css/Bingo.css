@@ -44,6 +44,9 @@ input[type="submit"]:hover,
     color: #fff;
     background-color: mediumseagreen;
 }
+input[type="submit"]:disabled{
+    background-color: rgb(37, 112, 71);
+}
 table.bingoContainer tbody tr td.done,
 .questionBox .option.incorrect {
     color: #fff;

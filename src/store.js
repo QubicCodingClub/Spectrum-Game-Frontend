@@ -29,14 +29,13 @@ const Bingo = (state= { life:5, cnt:0 }, action) => {
                 ...state,
                 life: action.payload
             }
-        case 'STORE_NUM':
+        case 'SUBMIT':
+            console.log(action.payload)
             return{
                 ...state,
-                num: 
-                action.payload
+                num: action.payload
             }
         case 'INC_CNT':
-            console.log(action.payload)
             return{
                 ...state,
                 cnt: action.payload
