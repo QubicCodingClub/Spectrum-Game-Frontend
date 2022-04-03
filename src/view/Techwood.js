@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../css/Techwood.css";
 
 const Techwood = () => {
   const dispatch = useDispatch();
+
   // const [word, setWord] = useState("Techingo");
   // const [string, setString] = useState("Shivang");
   // const [string6, setString6] = useState("Kalpeshbhai");
@@ -18,7 +19,7 @@ const Techwood = () => {
   // const [cstring5, setCstring5] = useState("D__s__n___n")
   // const [input, setInput] = useState();
 
-  const { string, life } = useSelector(state => state.Techwood);
+  const { string, life, score } = useSelector(state => state.Techwood);
   console.log(string, life);
 
   const [words, Setwords] = useState([
@@ -38,6 +39,15 @@ const Techwood = () => {
   const [ans, setAns] = useState(string);
   const [incorrect, setIncorrect] = useState(life)
   const [letter, setLetter] = useState();
+  const [count, setCount] = useState(score);
+
+  useEffect(() => {
+    for(var i=0; i<incorrect.length; i++){
+      if(incorrect[i] >= 8){
+        document.getElementsByClassName('abc')[i].setAttribute("style", "background-color: rgba(255, 0, 0, 0.5);");
+      }
+    }
+  }, [incorrect])
   
   function setCharAt(str, index, chr) {
     if (index > str.length - 1) return str;
@@ -53,20 +63,27 @@ const Techwood = () => {
           w[key] = str;
           setAns([...w]);
           dispatch({type : 'SET_ANS', payload: ans})
+          console.log(ans[key] === words[key])
+          if(ans[key] === words[key]){
+            document.getElementsByClassName('abc')[key].setAttribute("style", "background-color: rgba(0, 255, 13, 0.5);");
+          }
         }
       }
     }
     else{
+      setCount(count-10);
       var i = incorrect;
       i[key]+=1;
       setIncorrect([...i]);
       dispatch({type: 'SET_INCORRECT', payload: incorrect})
+      dispatch({type: 'SET_SCORE', payload: count})
     }
   }
 
   const reset = () => {
     dispatch({type: 'SET_ANS', payload: dwords})
     dispatch({type: 'SET_INCORRECT', payload: [0,0,0,0,0]})
+    dispatch({type: 'SET_SCORE', payload: 400})
   }
 
   const submitHandler = (key, letter) => (e) => {
@@ -138,35 +155,12 @@ const Techwood = () => {
   // }
 
   return (
-    // <div className="Techwood">
-    // <div className="tech">
-    //   {word.split("").map((c) => {
-    //     return <p className="techctr">{c}</p>;
-    //   })}
-    // </div>
-    //   <div className="str">
-    //     {s.split("").map((c) => {
-    //       return <p className="ctr">{c}</p>;
-    //     })}
-    //   </div>
-    // <form onSubmit={submitHandler} className="form">
-    //   <input
-    //     id="btn"
-    //     className="in"
-    //     type="text"
-    //     maxLength="1"
-    //     value={input}
-    //     onChange={(e) => setInput(e.target.value)}
-    //     required
-    //   />
-    //   <input type="submit" id="btn1" />
-    // </form>
-    //   <h1>{incorrect}</h1>
     <div>
       <input type="submit" value='Reset' onClick={reset}/>
-      {ans.map((val, key) => {
+      <h1>SCORE: {score}</h1>
+      {string.map((val, key) => {
         return (
-          <div>
+          <div className="abc">
             <div className="tech">
               {"Techwood".split("").map((c) => {
                 return <p className="techctr">{c}</p>;
