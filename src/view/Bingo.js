@@ -8,8 +8,16 @@ const Bingo = () => {
   
   const { life } = useSelector((state) => state.Bingo);
   const [incorrect, setIncorrect] = useState(5);
-  console.log(life)
+  const { cnt } = useSelector((state) => state.Bingo)
+  const [count, setCount] = useState(cnt);
+  console.log(count)
 
+  useEffect(() => {
+    console.log("gsdfv");
+    for(let i=0; i<count; i++ ){
+      document.getElementById('b'+nums[i]).setAttribute("style", "background-color: mediumseagreen;");
+    }
+  }, [count])
 
   const questions = [
     {
@@ -74,35 +82,46 @@ const Bingo = () => {
     },
   ];
 
-    var nums = [
-        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-        21, 22, 23, 24, 25,
-      ],
-      ranNums = [],
-      i = nums.length,
-      j = 0;
+  var nums = [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+    21, 22, 23, 24, 25,
+  ]
+    // var nums = [
+    //     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+    //     21, 22, 23, 24, 25,
+    //   ],
+    //   ranNums = [],
+    //   i = nums.length,
+    //   j = 0;
 
-    while (i--) {
-      j = Math.floor(Math.random() * (i + 1));
-      ranNums.push(nums[j]);
-      nums.splice(j, 1);
-    }
+    // while (i--) {
+    //   j = Math.floor(Math.random() * (i + 1));
+    //   ranNums.push(nums[j]);
+    //   nums.splice(j, 1);
+    // }
     // console.log(ranNums);
     // dispatch({ type: "STORE_NUM", payload: ranNums });
 
 
   const checkans = (key, ans) => {
     if (questions[key].ans === ans) {
-      var s = (ranNums[key]).toString();
-      document
-        .getElementById('b'+s)
-        .setAttribute("style", "background-color: mediumseagreen;");
+      // var s = (nums[key]).toString();
+      // document
+      //   .getElementById('b'+s)
+      //   .setAttribute("style", "background-color: mediumseagreen;");
+      setCount(count+1);
+      dispatch({type: 'INC_CNT', payload: cnt+1})
     } else {
       setIncorrect(incorrect - 1);
       dispatch({ type: "REDUCE_LIFE", payload: incorrect });
       if (incorrect === 0) alert("Try again later");
     }
   };
+
+  const reset = () => {
+    dispatch({type: 'REDUCE_LIFE', payload: 5})
+    dispatch({type: 'INC_CNT', payload: 0})
+  }
 
   const submitHandler = (key, ans) => (e) => {
     e.preventDefault();
@@ -111,8 +130,10 @@ const Bingo = () => {
 
   return (
     <div className="Bingo">
+        <h1>{count}</h1>
+        <input type='submit' value='reset' onClick={reset}/>
       <div className="lifeContainer">
-        <h1>{life}</h1>
+        <h1>{incorrect}</h1>
         <div className="life" id="l1">
           &#10084;
         </div>
@@ -179,25 +200,6 @@ const Bingo = () => {
           </tbody>
         </table>
       </div>
-      {/* <form onSubmit={submitHandler}>
-            <div class="questionBox">
-                <p class="title">Question</p>
-                <p class="question">Where does the SUN rise from?</p>
-                <div class="option" id="a">
-                    <input type="radio" name="answer" value="a" onChange={(e) => setAns(e.target.value)}/> EAST
-                </div>
-                <div class="option incorrect" id="b">
-                    <input type="radio" name="answer" value="b" onChange={(e) => setAns(e.target.value)}/> WEST
-                </div>
-                <div class="option incorrect" id="c">
-                    <input type="radio" name="answer" value="c" onChange={(e) => setAns(e.target.value)}/> NORTH
-                </div>
-                <div class="option incorrect" id="d">
-                    <input type="radio" name="answer" value="d" onChange={(e) => setAns(e.target.value)}/> SOUTH
-                </div>
-                <input className="Bingosubmit" type="submit" value="Submit" />
-            </div>
-        </form> */}
       {questions.map((question, key) => (
         <form onSubmit={submitHandler(key, ans)}>
           <div className="questionBox">

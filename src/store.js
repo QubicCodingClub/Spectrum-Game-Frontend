@@ -22,7 +22,7 @@ const Bollywood = (state={life:1}, action) => {
     }
 };
 
-const Bingo = (state= { life:5 }, action) => {
+const Bingo = (state= { life:5, cnt:0 }, action) => {
     switch(action.type){
         case 'REDUCE_LIFE':
             return{
@@ -32,7 +32,14 @@ const Bingo = (state= { life:5 }, action) => {
         case 'STORE_NUM':
             return{
                 ...state,
-                num: action.payload
+                num: 
+                action.payload
+            }
+        case 'INC_CNT':
+            console.log(action.payload)
+            return{
+                ...state,
+                cnt: action.payload
             }
         default:
             return state;
