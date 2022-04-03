@@ -4,14 +4,12 @@ import '../css/Bingo.css'
 
 const Bingo = () => {
   const dispatch = useDispatch();
+  const { life, cnt, num, progress_track } = useSelector((state) => state.Bingo)
   const [ans, setAns] = useState();
-  
-  const { life } = useSelector((state) => state.Bingo);
   const [incorrect, setIncorrect] = useState(life);
-  const { cnt, num } = useSelector((state) => state.Bingo)
   const [submitted, setSubmited] = useState(num);
   const [count, setCount] = useState(cnt);
-  console.log(num)
+  const [progress, setProgress] = useState(...progress_track);
 
 
   useEffect(() => {
@@ -112,6 +110,13 @@ const Bingo = () => {
       //   .setAttribute("style", "background-color: mediumseagreen;");
       setCount(count+1);
       dispatch({type: 'INC_CNT', payload: cnt+1})
+      var p = progress
+      p[key%5] = true;
+      setProgress(p);
+      if(!progress.includes(false)){
+        alert('You Won')
+      }
+      dispatch({type: 'STORE_PROGRESS', payload: progress})
     } else {
       setIncorrect(incorrect - 1);
       dispatch({ type: "REDUCE_LIFE", payload: incorrect });
@@ -123,6 +128,7 @@ const Bingo = () => {
     dispatch({type: 'REDUCE_LIFE', payload: 5})
     dispatch({type: 'INC_CNT', payload: 0})
     dispatch({ type: "SUBMIT", payload: [] });
+    dispatch({ type: "STORE_PROGRESS", payload: [[false, false, false, false, false ]] });
   }
 
   const submitHandler = (key, ans) => (e) => {

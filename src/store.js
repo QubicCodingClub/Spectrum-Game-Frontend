@@ -3,7 +3,7 @@ import { persistStore, persistReducer } from "redux-persist";
 import thunk from 'redux-thunk'
 import storage from "redux-persist/lib/storage";
 
-const state = { life:0 }
+const state = { life:0, progress_track: [false, false, false, false, false ] }
 
 const Bollywood = (state={life:1}, action) => {
     switch(action.type) {
@@ -22,7 +22,7 @@ const Bollywood = (state={life:1}, action) => {
     }
 };
 
-const Bingo = (state= { life:5, cnt:0 }, action) => {
+const Bingo = (state= { life:5, cnt:0}, action) => {
     switch(action.type){
         case 'REDUCE_LIFE':
             return{
@@ -30,7 +30,6 @@ const Bingo = (state= { life:5, cnt:0 }, action) => {
                 life: action.payload
             }
         case 'SUBMIT':
-            console.log(action.payload)
             return{
                 ...state,
                 num: action.payload
@@ -39,6 +38,11 @@ const Bingo = (state= { life:5, cnt:0 }, action) => {
             return{
                 ...state,
                 cnt: action.payload
+            }
+        case 'STORE_PROGRESS':
+            return{
+                ...state,
+                progress_track: action.payload
             }
         default:
             return state;

@@ -12,6 +12,7 @@ const Techwood = () => {
   var str = string;
   
   const { life } = useSelector((state) => state.Bollywood);
+  console.log(life);
   const { s } = useSelector((state) => state.Bollywood);
   const [incorrect, setIncorrect] = useState(life);
 
