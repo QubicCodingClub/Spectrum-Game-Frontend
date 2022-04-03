@@ -5,17 +5,17 @@ import storage from "redux-persist/lib/storage";
 
 const state = { life:0, progress_track: [false, false, false, false, false ] }
 
-const Bollywood = (state={life:1}, action) => {
+const Techwood = (state={life:[0,0,0,0,0]}, action) => {
     switch(action.type) {
-        case 'INCORRECT':
+        case 'SET_ANS':
+            return{
+                ...state,
+                string: action.payload
+            }
+        case 'SET_INCORRECT':
             return{
                 ...state,
                 life: action.payload
-            }
-        case 'UPDATE_STRING':
-            return{
-                ...state,
-                s: action.payload
             }
         default:
             return state;
@@ -50,7 +50,7 @@ const Bingo = (state= { life:5, cnt:0}, action) => {
 }
 
 const reducers = combineReducers({
-    Bollywood: Bollywood,
+    Techwood: Techwood,
     Bingo: Bingo
 })
 
