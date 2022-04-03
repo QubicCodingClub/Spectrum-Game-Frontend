@@ -1,0 +1,86 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    outline: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.questionBox {
+    padding: 10px 50px;
+    margin: 20px;
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color: rgb(243, 232, 232, 0.5);
+    /* opacity: 0.5; */
+}
+.questionBox .title {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+.questionBox .question {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+.questionBox .option {
+    width: 400px;
+    padding: 10px 20px;
+    margin: 10px 0px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 50px;
+}
+input[type="submit"],
+.questionBox .option.correct {
+    color: #fff;
+    background-color: mediumseagreen;
+}
+input[type="submit"]:hover,
+.questionBox .option.correct {
+    color: #fff;
+    background-color: mediumseagreen;
+}
+table.bingoContainer tbody tr td.done,
+.questionBox .option.incorrect {
+    color: #fff;
+    background-color: tomato;
+}
+input[type="submit"] {
+    padding: 5px 20px;
+    font-size: 16px;
+}
+.bingo{
+    /* background-color: blueviolet; */
+    display: flex;
+    justify-content: center;
+}
+/* Life Container */
+.lifeContainer{
+    /* background-color: black; */
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 50px;
+}
+.lifeContainer .life {
+    display: inline;
+    color: red;
+    font-size: 30px;
+}
+/* Bingo Container */
+table.bingoContainer {
+    text-align: center;
+}
+table.bingoContainer tbody tr td {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+table.bingoContainer tbody tr td{
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
